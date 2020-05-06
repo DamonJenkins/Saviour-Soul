@@ -34,10 +34,10 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable)
-		bool Damage(float _amount);
+		bool Damage(float _amount, Team _damageSource);
 
 	UFUNCTION(BlueprintCallable)
-		bool Heal(float _amount);
+		bool Heal(float _amount, Team _healSource);
 
 	UPROPERTY(BlueprintAssignable)
 		FActorDamaged damagedEvent;
@@ -53,9 +53,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 		void SetHealth(float _health);
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 		float health = 0;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 		float maxHealth = 0;
 };

@@ -31,7 +31,9 @@ void UDamageComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
-bool UDamageComponent::Damage(float _amount) {
+bool UDamageComponent::Damage(float _amount, Team _damageSource) {
+	if (_damageSource == team) return false;
+
 	health -= _amount;
 	damagedEvent.Broadcast();
 
@@ -41,7 +43,9 @@ bool UDamageComponent::Damage(float _amount) {
 	} else return false;
 }
 
-bool UDamageComponent::Heal(float _amount) {
+bool UDamageComponent::Heal(float _amount, Team _healSource) {
+	if (_healSource != team) return false;
+
 	health += _amount;
 	if (health >= maxHealth) {
 		health = maxHealth;
