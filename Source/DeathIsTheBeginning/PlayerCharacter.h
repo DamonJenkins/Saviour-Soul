@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
+class UCapsuleComponent;
+
 UCLASS()
 class DEATHISTHEBEGINNING_API APlayerCharacter : public ACharacter
 {
@@ -33,5 +35,7 @@ public:
 	UFUNCTION()
 
 		void MoveRight(float value);
+
+	UCapsuleComponent* capsule;
 
 };
